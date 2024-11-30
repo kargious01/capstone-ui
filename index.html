@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>Capstone Project for Software Development Course</header>
+    <div class="container">
+      <h1>Task Manager</h1>
+
+      <!-- Tab Navigation -->
+      <div class="tab-buttons" id="tab-buttons">
+        <button id="register-tab" class="active">Register</button>
+        <button id="login-tab">Login</button>
+      </div>
+      <!-- Logout Button -->
+      <div id="logout-section" style="display: none">
+        <button id="logout-btn">Logout</button>
+      </div>
+
+      <!-- User Authentication -->
+      <div id="auth-section">
+        <!-- Register Form -->
+        <div id="register-content" class="tab-content active">
+          <form id="register-form">
+            <h2>Register</h2>
+            <input
+              type="text"
+              id="reg-username"
+              placeholder="Username"
+              required
+            />
+            <input type="email" id="reg-email" placeholder="Email" required />
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Password"
+              required
+            />
+            <button type="submit">Register</button>
+          </form>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-content" class="tab-content">
+          <form id="login-form">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" required />
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Password"
+              required
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Task Management -->
+      <div id="task-section" class="taskwrapper">
+        <div class="left">
+          <form id="task-form">
+            <h2>Create Task</h2>
+            <input
+              type="text"
+              id="task-title"
+              placeholder="Task Title"
+              required
+            />
+            <textarea id="task-desc" placeholder="Description"></textarea>
+            <input type="date" id="task-deadline" required />
+            <select id="task-priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <button type="submit">Add Task</button>
+          </form>
+        </div>
+        <div class="right">
+          <div id="filter-section">
+            <input type="text" id="search-bar" placeholder="Search tasks..." />
+            <select id="filter-priority">
+              <option value="">Filter by Priority</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div id="task-list"></div>
+
+          <!-- Update Task Form (Initially Hidden) -->
+          <div id="update-task-section" style="display: none">
+            <h2>Update Task</h2>
+            <form id="update-task-form">
+              <input
+                type="text"
+                id="update-task-title"
+                placeholder="Task Title"
+                required
+              />
+              <textarea
+                id="update-task-desc"
+                placeholder="Description"
+              ></textarea>
+              <input type="date" id="update-task-deadline" required />
+              <select id="update-task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              <button type="submit">Update Task</button>
+              <button type="button" id="cancel-update">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Tab switching logic
+      const registerTab = document.getElementById("register-tab");
+      const loginTab = document.getElementById("login-tab");
+      const registerContent = document.getElementById("register-content");
+      const loginContent = document.getElementById("login-content");
+
+      registerTab.addEventListener("click", () => {
+        registerTab.classList.add("active");
+        loginTab.classList.remove("active");
+        registerContent.classList.add("active");
+        loginContent.classList.remove("active");
+      });
+
+      loginTab.addEventListener("click", () => {
+        loginTab.classList.add("active");
+        registerTab.classList.remove("active");
+        loginContent.classList.add("active");
+        registerContent.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>
